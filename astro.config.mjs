@@ -40,6 +40,6 @@ export default defineConfig({
 			},
 		}),
 	],
-	site: 'https://vanvuongngo.github.io/webdav-tutorial/de',
+	site: 'https://vanvuongngo.github.io',
 	base: '/webdav-tutorial',
 });
