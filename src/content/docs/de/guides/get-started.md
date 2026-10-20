@@ -1,6 +1,6 @@
 ---
-title: Get Started
-description: A guide in my new Starlight docs site.
+title: Schnellstart
+description: Anleitung wie man sein Kalendar/ Termine und Kontakt mit unterschiedlichenn Geräten synchronisiert.
 ---
 
 Guides lead a user through a specific task they want to accomplish, often with a sequence of steps.
