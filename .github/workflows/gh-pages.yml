@@ -1,3 +1,4 @@
+# see https://docs.astro.build/en/guides/deploy/github/
 name: Deploy to GitHub Pages dependencies preinstalled
 
 on:

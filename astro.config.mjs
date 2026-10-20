@@ -42,4 +42,6 @@ export default defineConfig({
 			},
 		}),
 	],
+	site: 'https://vanvuongngo.github.io',
+	base: '/webdav-tutorial',
 });
