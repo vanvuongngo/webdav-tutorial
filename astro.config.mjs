@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import { starlightBasePath } from "starlight-base-path";
 
 // https://astro.build/config
 export default defineConfig({
@@ -38,8 +39,9 @@ export default defineConfig({
 					label: 'Deutsch',
 				},
 			},
+			plugins: [starlightBasePath()]
 		}),
 	],
-	site: 'https://vanvuongngo.github.io',
+	// site: 'https://vanvuongngo.github.io',
 	base: '/webdav-tutorial',
 });
