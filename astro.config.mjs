@@ -28,20 +28,18 @@ export default defineConfig({
 					items: [{ autogenerate: { directory: 'reference' } }],
 				},
 			],
-			// Set English as the default language for this site.
 			defaultLocale: 'de',
 			locales: {
 				// English docs in `src/content/docs/en/`
 				en: {
 					label: 'English',
 				},
-				// Simplified Chinese docs in `src/content/docs/zh-cn/`
 				'de': {
 					label: 'Deutsch',
 				},
 			},
 		}),
 	],
-	site: 'https://vanvuongngo.github.io',
+	site: 'https://vanvuongngo.github.io/webdav-tutorial',
 	base: '/webdav-tutorial',
 });
