@@ -7,41 +7,61 @@ import { starlightBasePath } from "starlight-base-path";
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'Ngo',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/vanvuongngo/webdav-tutorial' }],
+			title: 'WebDav tutorial',
+			social: [
+				{ icon: 'github', label: 'GitHub', href: 'https://github.com/vanvuongngo/webdav-tutorial' },
+				{ icon: 'linkedin', label: 'Linkedin', href: 'https://www.linkedin.com/in/vanvuong-ngo/' },
+			],
 			sidebar: [
 				{
-					label: 'Guides',
+					label: 'Leitfaden',
+					translations: {
+						'en': 'Guides'
+					},
 					items: [
 						{ slug: 'guides/get-started' },
-						{ slug: 'guides/install-on-alpine' },
-						{ slug: 'guides/install-on-debian' },
-						{ slug: 'guides/install-on-fedora' },
 						{ slug: 'guides/secure' },
+						{ slug: 'guides/backup-restore' },
 					],
 				},
 				{
-					label: 'Smartphone setup',
-					items: [{ autogenerate: { directory: 'smartphone-setup' } }],
+					label: 'Installation',
+					translations: {
+						'en': 'Installation'
+					},
+					items: [{ autogenerate: { directory: 'installation' } }],
+				},				{
+					label: 'Clients einrichten',
+					translations: {
+						'en': 'Setup clients'
+					},
+					items: [{ autogenerate: { directory: 'client-setup' } }],
 				},
 				{
-					label: 'Reference',
+					label: 'Referenz',
+					translations: {
+						'en': 'Reference'
+					},
 					items: [{ autogenerate: { directory: 'reference' } }],
 				},
 			],
-			defaultLocale: 'de',
+			defaultLocale: 'root',
 			locales: {
 				// English docs in `src/content/docs/en/`
 				en: {
 					label: 'English',
+					lang: 'en',
 				},
-				'de': {
+				'root': {
 					label: 'Deutsch',
+					lang: 'de',
 				},
 			},
-			plugins: [starlightBasePath()]
+			plugins: [starlightBasePath()],
+			customCss: [
+				'./src/styles/custom.css',
+			],
 		}),
 	],
-	// site: 'https://vanvuongngo.github.io',
 	base: '/webdav-tutorial',
 });

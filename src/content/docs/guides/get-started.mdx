@@ -1,0 +1,51 @@
+---
+title: Schnellstart
+description: Anleitung wie man sein Kalendar/ Termine und Kontakt mit unterschiedlichenn Geräten synchronisiert.
+
+---
+import { Steps } from '@astrojs/starlight/components';
+import Schema from '../../../assets/schema.svg';
+import SchemaServer from '../../../assets/schema_server.svg';
+
+Mit wenigen Schritten setzen wir ein [WebDAV](http://webdav.org/) (Web-based Distributed Authoring and Versioning) Dienst auf.
+Dieser ermöglicht dir alle deine Kalender und Kontakte mit dein [Android](https://de.wikipedia.org/wiki/Android_(Betriebssystem)) oder [iOS](https://de.wikipedia.org/wiki/IOS_(Betriebssystem)) Smartphone oder andere PCs zu synchronisieren.
+
+Detailierte Informationen was [WebDAV](http://webdav.org/) ist und ob Du unbedingt diese Anleitung weiterlesen solltest, lese unter [Dokumentation](/reference/overview).
+
+## Was wir erreichen wollen
+
+Das einfachste Setup wäre [WebDAV](http://webdav.org/) auf dem [Linux](https://de.wikipedia.org/wiki/Linux) PC zu installieren. Dann kann man bereits sychronisieren:
+
+### PC Variante
+
+<Schema />
+
+Die Einschränkung wäre, dass man den PC bei der Synchronisierung immer angeschaltet haben müsste. Falls dies unerwünscht ist, müsste man einen Server oder Mini-PC (z.B. Raspberry-Pi) haben.
+
+### Server Variante
+
+<SchemaServer />
+
+## Installation
+
+<Steps>
+
+1. Auf welches Betriebssystem soll installiert werden?
+
+    [Alpine Linux](/installation/install-on-alpine)
+
+    [Mint/ Debian/ Ubuntu Linux](/installation/install-on-debian)
+
+    [Fedora Linux](/installation/install-on-fedora)
+
+    [Proxmox](/installation/install-on-proxmox)
+
+2. Sichere die Verbindung mit Verschlüsselung
+
+   siehe [Sicherheit](/guides/secure)
+
+</Steps>
+
+## Weitere Quellen
+
+- Lese mehr auf der [Getting started](https://radicale.org/v3.html#getting-started) Seite auf der [radical.org](https://radicale.org/)

@@ -1,0 +1,33 @@
+/* default and dark mode colors. */
+:root {
+  --sl-font-system: system-ui, sans-serif;
+
+  /* title top left */
+  --sl-text-h4: 1rem;
+}
+/* Light mode colors. */
+/*
+:root[data-theme='light'] {
+}
+*/
+
+@media (width >= 50rem) {
+  .hero {
+    /* reduce whitespace to use more space */
+    padding-block: clamp(2.5rem, 1rem + 10vmin, 2rem);
+  }
+}
+
+
+h1 {
+    font-weight: 900;
+}
+
+h2 {
+    font-weight: 700;
+}
+
+h3 {
+    font-weight: 400;
+    font-size: 1.4rem;
+}
