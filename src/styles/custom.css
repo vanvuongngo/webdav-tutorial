@@ -36,6 +36,8 @@ a {
   text-decoration: none;
 }
 
-ul {
-  list-style-type: upper-latin;
+.sl-steps {
+  ul {
+    list-style-type: upper-latin;
+  }
 }
