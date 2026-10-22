@@ -7,7 +7,7 @@ import { starlightBasePath } from "starlight-base-path";
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'WebDav tutorial',
+			title: 'WebDAV tutorial',
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/vanvuongngo/webdav-tutorial' },
 				{ icon: 'linkedin', label: 'Linkedin', href: 'https://www.linkedin.com/in/vanvuong-ngo/' },

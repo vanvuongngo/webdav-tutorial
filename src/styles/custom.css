@@ -31,3 +31,11 @@ h3 {
     font-weight: 400;
     font-size: 1.4rem;
 }
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: upper-latin;
+}

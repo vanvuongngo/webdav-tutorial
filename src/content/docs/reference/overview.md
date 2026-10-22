@@ -13,13 +13,13 @@ Es ist nicht für neue [Linux](https://de.wikipedia.org/wiki/Linux) Anwender ged
 - Datenhoheit - Daten gehören dir auch wenn der Anbieter nicht mehr existiert
 - Einfache Backups und Wiederherstellung
 - Leichtgewichtiger als grosse Lösungen wie [OpenCloud](https://opencloud.eu/de/) oder [NextCloud](https://nextcloud.com/)
-- Open-Source Lizenz - der sourcecode ist einsehbar (auditierbar) und du hast kein vendor-lock
+- Open-Source Lizenz - der sourcecode ist einsehbar (auditierbar) und du hast kein vendor locked-in
 
 ## Für wen diese Anleitung nicht ist
 
 - Wenn man nichts selbst aufsetzen möchte sondern eine Hosting Lösung braucht
 - Wenn man auch Dateien mit Anderen teilen möchte
-- Wenn man ein neuer [Linux](https://de.wikipedia.org/wiki/Linux) Anwender ist und sich (noch) nicht mit einer [Shell](https://de.wikipedia.org/wiki/Unix-Shell) nicht auskennt
+- Wenn man ein neuer [Linux](https://de.wikipedia.org/wiki/Linux) Anwender ist und sich (noch) nicht mit einer [Shell](https://de.wikipedia.org/wiki/Unix-Shell) auskennt
 - Wenn man sich nicht selbst um ein Backup & Restore kümmern möchte
 - Wenn man eine sehr schnelle Sychronisierung benötigt
 
