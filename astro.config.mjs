@@ -8,6 +8,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'WebDAV tutorial',
+			favicon: '/favicon.png',
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/vanvuongngo/webdav-tutorial' },
 				{ icon: 'linkedin', label: 'Linkedin', href: 'https://www.linkedin.com/in/vanvuong-ngo/' },
