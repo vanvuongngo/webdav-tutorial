@@ -1,6 +1,6 @@
 /* default and dark mode colors. */
 :root {
-  --sl-font-system: system-ui, sans-serif;
+  --sl-font: system-ui, sans-serif;
 
   /* title top left */
   --sl-text-h4: 1rem;

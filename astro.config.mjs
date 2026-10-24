@@ -61,6 +61,33 @@ export default defineConfig({
 			customCss: [
 				'./src/styles/custom.css',
 			],
+			head: [
+				{
+					tag: 'link',
+					attrs: {
+						rel: 'icon',
+						type: 'image/png',
+						sizes: '192x192',
+						href: 'favicon-192.png',
+					},
+				},
+				{
+					tag: 'link',
+					attrs: {
+						rel: 'icon',
+						type: 'image/png',
+						sizes: '512x512',
+						href: 'favicon-512.png',
+					},
+				},
+				{
+					tag: 'link',
+					attrs: {
+						rel: 'manifest',
+						href: 'manifest.json',
+					},
+				},
+			],
 		}),
 	],
 	base: '/webdav-tutorial',
