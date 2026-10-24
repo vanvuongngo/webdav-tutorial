@@ -1,0 +1,26 @@
+---
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+const { title, description, additional, link} = Astro.props;
+const domain = link && new URL(link || '').hostname;
+---
+<CardGrid >
+	<Card title={Astro.locals.t("feature.guides.title")} icon="star">
+	    {Astro.locals.t("feature.guides.content")}
+	</Card>
+	<Card title={Astro.locals.t("feature.installation.title")} icon="setting">
+		{Astro.locals.t("feature.installation.content")}
+	</Card>
+	<Card title={Astro.locals.t("feature.documentation.title")} icon="document">
+		{Astro.locals.t("feature.documentation.content")}
+	</Card>
+	<Card title={Astro.locals.t("feature.tutorials.title")} icon="open-book">
+		{Astro.locals.t("feature.tutorials.content")}
+		<a href="https://github.com/vanvuongngo/awesome-pc-workshops" target="_blank">Awesome PC Workshops</a>
+	</Card>
+	<Card title={Astro.locals.t("feature.contact.title")} icon="open-book">
+		{Astro.locals.t("feature.contact.content")}
+		<a href="https://www.linkedin.com/in/vanvuong-ngo/" rel="noopener" target="_blank">LinkedIn</a> |
+		<a href="https://github.com/vanvuongngo/" rel="noopener" target="_blank">GitHub</a>
+	</Card>
+</CardGrid>
