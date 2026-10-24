@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "start_url": "/webdav-tutorial",
+    "start_url": "https://vanvuongngo.github.io/webdav-tutorial/",
     "display": "standalone",
     "theme_control": "#ffffff",
     "background_color": "#ffffff"
