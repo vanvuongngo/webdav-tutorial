@@ -2,7 +2,7 @@
 
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
 
-<img src="src/assets/webdav_synchronisation_betwee_devices.png" alt="Schema about synchronization between smartphone and devides" style="height: 160px; width: 100%; object-fit: cover; object-position: 50% 88%;">
+<img src="src/assets/webdav_synchronisation_betwee_devices.png" alt="Schema about synchronization between smartphone and devides" height="300">
 
 ## open the tutorial
 
