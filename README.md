@@ -49,6 +49,7 @@ All commands are run from the root of the project, from a terminal:
 
 <details>
  <summary><h2>Updating Starlight</h2></summary>
+
 ```sh
 pnpm dlx @astrojs/upgrade
 ```
