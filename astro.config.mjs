@@ -3,6 +3,8 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import { starlightBasePath } from "starlight-base-path";
 
+const base = '/webdav-tutorial';
+
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
@@ -30,7 +32,11 @@ export default defineConfig({
 					translations: {
 						'en': 'Installation'
 					},
-					items: [{ autogenerate: { directory: 'installation' } }],
+					items: [
+						{ slug: 'installation/install-on-linux' },
+						{ slug: 'installation/install-on-proxmox' },
+						{ slug: 'installation/install-on-k8s' },
+					],
 				},				{
 					label: 'Clients einrichten',
 					translations: {
@@ -85,11 +91,11 @@ export default defineConfig({
 					tag: 'link',
 					attrs: {
 						rel: 'manifest',
-						href: 'manifest.json',
+						href: `${base}/manifest.json`,
 					},
 				},
 			],
 		}),
 	],
-	base: '/webdav-tutorial',
+	base,
 });

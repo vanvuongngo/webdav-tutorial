@@ -1,0 +1,96 @@
+---
+title: Installation auf Linux
+description: Installationsanleitung auf Linux Betriebssystem.
+---
+import { Code, Steps, Tabs, TabItem } from "@astrojs/starlight/components";
+
+Hier findest du die Anleitung zur Installation von [Radicale](/reference/radicale) ein [WebDAV](http://webdav.org/) service für unterschiedlichen Linux-Distributionen.
+
+[Alpine Linux](https://alpinelinux.org/), diese Linux-Distribution ist extrem schlank und bietet einen erhöhten Grad an Sicherheit.
+
+[Debian](https://debian.org/) basierte Distributionen, diese Linux-Distribution bietet eine Bandbreite von Anwendung: von hohe Stabilitätsanforderung ([Debian](https://debian.org/)) bis die Anwender benutzungsfreundliche UI mit Windows look-and-feel  ([Mint](https://linuxmint.com/)).
+
+
+<Steps>
+
+1. Installiere Radicale
+
+    <Tabs syncKey="distributions">
+        <TabItem label="Alpine">
+            <Code
+                code="sudo apk add --update --no-cache radicale apache2-utils nano"
+                lang="sh"
+            />
+        </TabItem>
+        <TabItem label="Debian/ Mint/ Ubuntu"
+            ><Code
+                code="sudo apt-get update
+                sudo apt-get install radicale"
+                lang="sh"
+            />
+        </TabItem>
+        <TabItem label="Fedora"
+            ><Code
+                code="sudo dnf update
+                sudo dnf install radicale3.noarch"
+                lang="sh"
+            />
+        </TabItem>
+    </Tabs>
+
+2. Konfiguriere Radicale
+
+    ```sh
+    sudo nano /etc/radicale/config
+    ```
+
+    <Code
+        code="[server]
+hosts = 127.0.0.1:5232
+
+[auth]
+type = htpasswd"
+        title="/etc/radicale/config"
+        lang="ini"
+    />
+
+3. Zugänge einrichten
+
+    Beliebige Anzahl von Benutzern anlegen (wiederholen):
+    ```sh
+    sudo htpasswd -B /etc/radicale/users <USER-NAME>
+    ```
+
+4. Radicale Dienst autostart und starten
+
+    ```sh
+    sudo rc-update add radicale default
+    ```
+    ```sh
+    sudo rc-service radicale start
+    ```
+
+5. Ein WebDAV Kalender einrichten
+
+    öffne im Browser http://localhost:5232/
+
+6. Desktop Anwendung einrichten
+
+    - [Gnome Kalender](...) oder
+    - [thunderbird](...)
+
+7. Für Smartphone/ Netzwerkfreigabe HTTPS
+
+    um für smartphone .. siche HTTPS mit caddy, Sichere die Verbindung mit Verschlüsselung, siehe Sicherheit
+    siehe [Secure](secure.md)
+
+8. Client auf smartphone einrichten
+
+    - One Calendar siehe http://localhost:4321/webdav-tutorial/smartphone-setup/clients/
+
+9. Backup & Restore
+
+    - Datesicherung
+    - Migration auf neue Radicale server
+
+</Steps>
