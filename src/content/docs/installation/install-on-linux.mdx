@@ -4,12 +4,13 @@ description: Installationsanleitung auf Linux Betriebssystem.
 ---
 import { Code, Steps, Tabs, TabItem } from "@astrojs/starlight/components";
 
-Hier findest du die Anleitung zur Installation von [Radicale](/reference/radicale) ein [WebDAV](http://webdav.org/) service für unterschiedlichen Linux-Distributionen.
+Hier findest du die Anleitung zur Installation von [Radicale](/reference/radicale) ein OpenSource [WebDAV](http://webdav.org/) service für unterschiedlichen Linux-Distributionen.
 
-[Alpine Linux](https://alpinelinux.org/), diese Linux-Distribution ist extrem schlank und bietet einen erhöhten Grad an Sicherheit.
+Es läuft unter [Alpine Linux](https://alpinelinux.org/), diese Linux-Distribution ist extrem schlank und bietet einen erhöhten Grad an Sicherheit.
 
-[Debian](https://debian.org/) basierte Distributionen, diese Linux-Distribution bietet eine Bandbreite von Anwendung: von hohe Stabilitätsanforderung ([Debian](https://debian.org/)) bis die Anwender benutzungsfreundliche UI mit Windows look-and-feel  ([Mint](https://linuxmint.com/)).
+Auch [Debian](https://debian.org/) basierte Distributionen werden unterstützt. Diese Linux-Distribution bietet eine Bandbreite von Anwendung: von hohe Stabilitätsanforderung ([Debian](https://debian.org/)) bis die Anwender benutzungsfreundliche UI mit Windows look-and-feel  ([Mint](https://linuxmint.com/)).
 
+Für Anwender die vorher MacOS genutzt haben und eine stabile Distribution suchen, für die wäre [Fedora Workstation](https://fedoraproject.org/workstation/) Linux eine Option.
 
 <Steps>
 
@@ -18,7 +19,7 @@ Hier findest du die Anleitung zur Installation von [Radicale](/reference/radical
     <Tabs syncKey="distributions">
         <TabItem label="Alpine">
             <Code
-                code="sudo apk add --update --no-cache radicale apache2-utils nano"
+                code="sudo apk add --update --no-cache radicale apache2-utils openssl nano"
                 lang="sh"
             />
         </TabItem>
@@ -53,6 +54,13 @@ type = htpasswd"
         title="/etc/radicale/config"
         lang="ini"
     />
+    `hosts = 127.0.0.1:5232` bietet die maximale Sicherheit, da [Radicale](/reference/radicale) nur auf den eigenen PC erreichbar ist.
+
+    Achtung - nicht empfehlswert und möglich: Man kann `hosts = 0.0.0.0:5232` setzen, dann ist Radicale auch von anderen Rechner/ Smartphone zu erreichen.
+    Da es um eine unverschlüsselt HTTP Verbindung handelt, ist die Netzwerübertragung nicht gesichert und wenn man einen Notebook mit einen Hotspot verbindet, ist die Kommunikation abhörbar.
+    Nur zu Hause zu empfehlen und auf einen Server/ Mini-PC daheim.
+
+    Für eine empfohlene verschlüsselte HTTPS Verbindung, siehe Kapitel [Verschlüsselte HTTPS Verbindung](http://localhost:4321/webdav-tutorial/guides/secure/).
 
 3. Zugänge einrichten
 
@@ -60,17 +68,109 @@ type = htpasswd"
     ```sh
     sudo htpasswd -B /etc/radicale/users <USER-NAME>
     ```
+    `<USER-NAME>` mit deinen Benutzernamen einsetzen
 
 4. Radicale Dienst autostart und starten
 
-    ```sh
-    sudo rc-update add radicale default
-    ```
-    ```sh
-    sudo rc-service radicale start
-    ```
+    Damit [Radicale](/reference/radicale) bei einen Neustart des PC automatisch startet, muss man wie folgt einrichten:
 
-5. Ein WebDAV Kalender einrichten
+    <Tabs syncKey="distributions">
+        <TabItem label="Alpine">
+            schalte Autostart ein
+            <Code
+                code="sudo rc-update add radicale default"
+                lang="sh"
+            />
+            starte [Radicale](/reference/radicale)
+            <Code
+                code="sudo rc-service radicale start"
+                lang="sh"
+            />
+        </TabItem>
+        <TabItem label="Debian/ Mint/ Ubuntu">
+            ACHTUNG: noch nicht getestet
+
+            Systemd Konfiguration neu laden
+            <Code
+                code="sudo systemctl daemon-reload"
+                lang="sh"
+            />
+            schalte Autostart ein
+            <Code
+                code="sudo systemctl enable radicale"
+                lang="sh"
+            />
+            starte [Radicale](/reference/radicale)
+            <Code
+                code="sudo systemctl start radicale"
+                lang="sh"
+            />
+            Überprüfe Status
+            <Code
+                code="sudo systemctl status radicale"
+                lang="sh"
+            />
+        </TabItem>
+        <TabItem label="Fedora">
+            ACHTUNG: noch nicht getestet
+
+            <Code
+                code="sudo adduser radicale"
+                lang="sh"
+            />
+            <Code
+                code="mkdir -p /var/lib/radicale/collections"
+                lang="sh"
+            />
+            <Code
+                code="chown -R radicale:radicale /var/lib/radicale"
+                lang="sh"
+            />
+            <Code
+                code="nano /etc/systemd/system/radicale.service"
+                lang="sh"
+            />
+            <Code
+                code="[Unit]
+Description=A simple CalDAV (calendar) and CardDAV (contact) server
+After=network.target
+Requires=network.target
+
+[Service]
+ExecStart=/usr/bin/env python3 -m radicale
+Restart=on-failure
+User=radicale
+Group=radicale
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+NoNewPrivileges=true
+ReadWritePaths=/var/lib/radicale/collections
+
+[Install]
+WantedBy=multi-user.target"
+                lang="sh"
+            />
+            Dienst aktivieren und starten
+            <Code
+                code="sudo systemctl daemon-reload
+sudo systemctl enable radicale
+sudo systemctl start radicale"
+                lang="sh"
+            />
+            Überprüfe Status
+            <Code
+                code="sudo systemctl status radicale"
+                lang="sh"
+            />
+        </TabItem>
+    </Tabs>
+
+5. Richte einen WebDAV Kalender ein
 
     öffne im Browser http://localhost:5232/
 
@@ -81,8 +181,8 @@ type = htpasswd"
 
 7. Für Smartphone/ Netzwerkfreigabe HTTPS
 
-    um für smartphone .. siche HTTPS mit caddy, Sichere die Verbindung mit Verschlüsselung, siehe Sicherheit
-    siehe [Secure](secure.md)
+    Um Radicale für smartphone erreichbar zu machen, sollte man eine sichere Verbindung durch Verschlüsseldung einrichten.
+    siehe [SeVerschlüsselte HTTPS Verbindungcure](../guides/secure.md)
 
 8. Client auf smartphone einrichten
 
