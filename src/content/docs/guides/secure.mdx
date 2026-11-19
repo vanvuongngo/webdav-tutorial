@@ -30,7 +30,8 @@ Eine einfachere Einrichtung und sichere Datenübertragung unterstützt die OpenS
 Es wird mit so gut wie keine Konfiguration aufgesetzt. Ein SSL Zertifikat gibt es gratis mittels [Let's Encrypt](https://letsencrypt.org/) und es wird automatisch verlängert.
 
 Für [Pangolin](../../reference/pangolin/) wird eine Domain (z.B. MeineDomain.ch) sowie ein günstiges Cloud VPS (virtual private server) benötigt.
-Damit wird die Synchronisation von deinen Kalender und Termine aus den Internet ermöglicht. Des Weiteren wird das Tool [Newt]() ist deine private IP zu Hause geschützt, damit keine [DDoS](https://de.wikipedia.org/wiki/Denial_of_Service) Attacken passieren kann.
+Damit wird die Synchronisation von deinen Kalender und Termine aus den Internet ermöglicht.
+Des Weiteren wird das Tool Newt zur Erstellung eines gesicherten Tunnels vom Radicale zum VPS aufgebaut. Deine private IP zu Hause wird damit geschützt, damit keine [DDoS](https://de.wikipedia.org/wiki/Denial_of_Service) Attacken passieren können.
 Die VPS mit der öffentlichen IP wird durch den Cloud Provider geschützt, der die Mittel zum Erkennen von Attacken und Gegenmassnahmen unternehmen kann.
 
 <Steps>
@@ -51,7 +52,7 @@ Die VPS mit der öffentlichen IP wird durch den Cloud Provider geschützt, der d
 
     - per script: [Installer](https://pangolin.net/install?product=server&method=quick) (öffnen und scrollen)
 
-5. Installiere Newt - VPN client
+5. Installiere Newt - Tunnel client
 
     <Tabs syncKey="distributions">
         <TabItem label="Alpine">
