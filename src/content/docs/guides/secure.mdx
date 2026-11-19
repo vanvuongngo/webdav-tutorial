@@ -1,0 +1,121 @@
+---
+title: Verschlüsselte HTTPS Verbindung
+description: Wie man mit dem Pangolin ein HTTPS aufsetzt um die Übertragung abzusichern.
+hero:
+  title: <strong>Sicher und unterwegs synchronisieren</strong>
+  tagline: Wie man sein Kalender/ Termine und Kontakte auch unterwegs synchronisieren kann
+---
+import { Image } from 'astro:assets'
+import { Code, Steps, Tabs, TabItem } from "@astrojs/starlight/components";
+import schemaSecured from '@assets/secured.png';
+
+
+<Image src={schemaSecured} alt="secured schema"/>
+
+Eine abgesicherte Datenübertragung wird standardmässig empfohlen (data in transit):
+
+- da sich noch andere Personen im Netzwerk befinden können, z.B. öffentliche Hotspots
+- da das Netzwerk kompromitiert sein könnte, z.B. durch betroffene IoT-devices
+
+## Radicale eigene Mittel
+
+[Radicale](/reference/radicale) unterstützt selbst eine Funktion für die verschlüsselte Übertragung mittels SSL.
+Warum man es aber nicht verwendet möchte? Die Nachteile sind: Es bedarf an einer manuellen Erstellung (self-signed certificates) oder den teuren Kauf eines SSL-Zertifikats.
+Und einige Einstellungen sind notwendig, die gepflegt werden müsste.
+Zusätzlich bräuchte man einen VPN (virtual private networks) oder würde ein port-forwarding in der Firewall einrichten um unterwegs den [Radicale](/reference/radicale) zu erreichen.
+
+## Pangolin
+
+Eine einfachere Einrichtung und sichere Datenübertragung unterstützt die OpenSource Software [Pangolin](../../reference/pangolin/).
+Es wird mit so gut wie keine Konfiguration aufgesetzt. Ein SSL Zertifikat gibt es gratis mittels [Let's Encrypt](https://letsencrypt.org/) und es wird automatisch verlängert.
+
+Für [Pangolin](../../reference/pangolin/) wird eine Domain (z.B. MeineDomain.ch) sowie ein günstiges Cloud VPS (virtual private server) benötigt.
+Damit wird die Synchronisation von deinen Kalender und Termine aus den Internet ermöglicht. Des Weiteren wird das Tool [Newt]() ist deine private IP zu Hause geschützt, damit keine [DDoS](https://de.wikipedia.org/wiki/Denial_of_Service) Attacken passieren kann.
+Die VPS mit der öffentlichen IP wird durch den Cloud Provider geschützt, der die Mittel zum Erkennen von Attacken und Gegenmassnahmen unternehmen kann.
+
+<Steps>
+
+1. Kaufe eine Domain, z.B. bei [hosttech.ch](https://www.hosttech.ch/domain-kaufen/)
+
+2. Miete den kleinsten VPS bei einen Cloud Provider oder gratis bei [Oracle Cloud Free Tier](https://www.oracle.com/cloud/free/)
+
+    - merke die öffentliche IP
+
+3. Richte eine Weiterleitung zu der öffentlichen IP mittels deines Domain-Providers
+
+    Die Einrichtung ist Domain-Provider spezifisch, hier ist eine Hilfe: https://docs.pangolin.net/manage/domains
+
+4. Installiere Pangolin Server auf den VPS
+
+    - empfohlen mit docker: [compose](https://pangolin.net/install?product=server&method=compose) (öffnen und scrollen)
+
+    - per script: [Installer](https://pangolin.net/install?product=server&method=quick) (öffnen und scrollen)
+
+5. Installiere Newt - VPN client
+
+    <Tabs syncKey="distributions">
+        <TabItem label="Alpine">
+            <Code
+                code="sudo apk add --update --no-cache newt"
+                lang="sh"
+            />
+        </TabItem>
+        <TabItem label="Linux"
+            ><Code
+                code="curl -fsSL https://static.pangolin.net/get-newt.sh | bash"
+                lang="sh"
+            />
+        </TabItem>
+    </Tabs>
+
+    <Tabs syncKey="distributions">
+        <TabItem label="Alpine">
+            Verwende einen Editor deiner Wahl:
+            <Code
+                code="mkdir -p ~/.config/newt-client
+                nano ~/.config/newt-client/config.json"
+                lang="sh"
+            />
+            Inhalt mit Werten aus der Pangolin UI:
+            <Code
+                code='{
+                    "endpoint": "https://pangolin.DeineDomain.ch",
+                    "id": "ID_IN_PANGOLIN_UI",
+                    "secret": "SECRET_IN_PANGOLIN_UI"
+                }'
+                lang="json"
+            />
+            Als service starten
+            <Code
+                code="sudo nano /etc/init.d/newt"
+                lang="sh"
+            />
+           <Code
+                code='#!/sbin/openrc-run
+
+                name="Newt"
+                description="Expose WebDAV"
+                command="/usr/local/bin/newt"
+                command_args="--config-file /home/<USER>/.config/newt-client/config.json --disable-ssh"
+                command_background="yes"
+                pidfile="/run/${RC_SVCNAME}.pid"
+
+                depend() {
+                need net
+                }'
+                lang="ini"
+            />
+            <Code
+                code="sudo rc-update add newt default
+                sudo rc-service newt start"
+                lang="sh"
+            />
+            
+            weitere doc: https://docs.pangolin.net/manage/sites/install-newt
+
+        </TabItem>
+        <TabItem label="Linux"><div>öffne https://docs.pangolin.net/manage/sites/install-newt</div></TabItem>
+    </Tabs>
+
+
+</Steps>

@@ -54,11 +54,10 @@ type = htpasswd"
         title="/etc/radicale/config"
         lang="ini"
     />
-    `hosts = 127.0.0.1:5232` bietet die maximale Sicherheit, da [Radicale](/reference/radicale) nur auf den eigenen PC erreichbar ist.
-
-    Achtung - nicht empfehlswert und möglich: Man kann `hosts = 0.0.0.0:5232` setzen, dann ist Radicale auch von anderen Rechner/ Smartphone zu erreichen.
-    Da es um eine unverschlüsselt HTTP Verbindung handelt, ist die Netzwerübertragung nicht gesichert und wenn man einen Notebook mit einen Hotspot verbindet, ist die Kommunikation abhörbar.
-    Nur zu Hause zu empfehlen und auf einen Server/ Mini-PC daheim.
+    Die Einstellung `hosts = 127.0.0.1:5232` bietet die maximale Sicherheit, da [Radicale](/reference/radicale) nur auf den eigenen PC erreichbar ist.
+    Nicht empfehlswert und möglich zu Testzwecken: Man kann `hosts = 0.0.0.0:5232` setzen, dann ist [Radicale](/reference/radicale) auch von anderen Rechner/ Smartphone im Netzwerk zu erreichen.
+    Da es sich um eine unverschlüsselt HTTP Verbindung handelt, ist die Datenübertragung nicht gesichert. In einen öffentlichen Hotspot wäre die Kommunikation abhörbar.
+    Dies wäre beschränkt zu verwenden, wenn [Radicale](/reference/radicale) NUR zu Hause läuft oder über VPN verbunden ist.
 
     Für eine empfohlene verschlüsselte HTTPS Verbindung, siehe Kapitel [Verschlüsselte HTTPS Verbindung](http://localhost:4321/webdav-tutorial/guides/secure/).
 
@@ -68,7 +67,7 @@ type = htpasswd"
     ```sh
     sudo htpasswd -B /etc/radicale/users <USER-NAME>
     ```
-    `<USER-NAME>` mit deinen Benutzernamen einsetzen
+    `<USER-NAME>` mit den Benutzernamen einsetzen
 
 4. Radicale Dienst autostart und starten
 
@@ -181,16 +180,17 @@ sudo systemctl start radicale"
 
 7. Für Smartphone/ Netzwerkfreigabe HTTPS
 
-    Um Radicale für smartphone erreichbar zu machen, sollte man eine sichere Verbindung durch Verschlüsseldung einrichten.
-    siehe [SeVerschlüsselte HTTPS Verbindungcure](../guides/secure.md)
+    Um [Radicale](/reference/radicale) für smartphones erreichbar zu machen, sollte man eine sichere Verbindung durch Verschlüsseldung einrichten,
+    siehe [Verschlüsselte HTTPS Verbindungen](../guides/secure)
 
-8. Client auf smartphone einrichten
+8. Client einrichten
 
-    - One Calendar siehe http://localhost:4321/webdav-tutorial/smartphone-setup/clients/
+    - "One Calendar" für smartphone, siehe [CalDAV und CardDAV clients](../../client-setup/smartphone-clients)
+
+    - Thunderbird für PCs, siehe [CalDAV und CardDAV clients für PCs](../../client-setup/desktop-clients)
 
 9. Backup & Restore
 
-    - Datesicherung
-    - Migration auf neue Radicale server
+    - [Datesicherung](../guides/backup-restore)
 
 </Steps>

@@ -3,12 +3,22 @@ title: Radicale
 description: Verbreitetes WebDAV server ohne client app
 ---
 
-Free und Open-Source CalDAV und CardDAV Anwendung: [Radicale](https://radicale.org/)
+Free und Open-Source CalDAV und CardDAV Anwendung: [radicale.org](https://radicale.org/)
 
 siehe auf Installationsanleitungen:
 
-- [Installation auf Alpine](/installation/install-on-alpine/)
-- [Installation auf Debian/ Mint/ Ubuntu](/installation/install-on-debian/)
-- [Installation auf Fedora](/installation/install-on-fedora/)
+- [Installation auf Linux](/installation/install-on-linux/)
 - [Installation auf K8s](/installation/install-on-k8s/)
 - [Installation auf Proxmox](/installation/install-on-proxmox/)
+
+## Voraussetzungen
+
+- CPU: 1 vCPU/ CPU
+
+- RAM: 40MB
+
+- Speicher: 300MB
+
+- Linux
+
+- Newt

@@ -23,6 +23,9 @@ importers:
       starlight-base-path:
         specifier: ^0.2.1
         version: 0.2.1(@astrojs/markdown-remark@7.3.3)(@astrojs/starlight@0.42.7(@astrojs/markdown-remark@7.3.3)(astro@7.4.2(@astrojs/markdown-remark@7.3.3)(@types/node@24.19.2)(yaml@2.9.1)))(astro@7.4.2(@astrojs/markdown-remark@7.3.3)(@types/node@24.19.2)(yaml@2.9.1))
+      starlight-image-zoom:
+        specifier: ^0.16.2
+        version: 0.16.2(@astrojs/starlight@0.42.7(@astrojs/markdown-remark@7.3.3)(astro@7.4.2(@astrojs/markdown-remark@7.3.3)(@types/node@24.19.2)(yaml@2.9.1)))(astro@7.4.2(@astrojs/markdown-remark@7.3.3)(@types/node@24.19.2)(yaml@2.9.1))
 
 packages:
 
@@ -1590,6 +1593,12 @@ packages:
     peerDependenciesMeta:
       '@astrojs/markdown-remark':
         optional: true
+
+  starlight-image-zoom@0.16.2:
+    resolution: {integrity: sha512-TF3TGjkb3d8hsYE5Hr09vTVAG0SsozNGQRy0Xy29zHqxNZVorrnE7CsddO98M6NA1KbKg4p2sNrCq59COLL80A==}
+    peerDependencies:
+      '@astrojs/starlight': '>=0.42.0'
+      astro: '>=7.2.10'
 
   std-env@4.3.0:
     resolution: {integrity: sha512-OtU/EgQ1kIm5KwqQpBC6ZEMXrZRui11w8zgfTWp8cdO9B8OaPsbA8bTHO2P+HNo1VlUTGMVBwPhydu6poeXiag==}
@@ -3944,6 +3953,18 @@ snapshots:
       unist-util-visit: 5.1.0
     optionalDependencies:
       '@astrojs/markdown-remark': 7.3.3
+
+  starlight-image-zoom@0.16.2(@astrojs/starlight@0.42.7(@astrojs/markdown-remark@7.3.3)(astro@7.4.2(@astrojs/markdown-remark@7.3.3)(@types/node@24.19.2)(yaml@2.9.1)))(astro@7.4.2(@astrojs/markdown-remark@7.3.3)(@types/node@24.19.2)(yaml@2.9.1)):
+    dependencies:
+      '@astrojs/starlight': 0.42.7(@astrojs/markdown-remark@7.3.3)(astro@7.4.2(@astrojs/markdown-remark@7.3.3)(@types/node@24.19.2)(yaml@2.9.1))
+      astro: 7.4.2(@astrojs/markdown-remark@7.3.3)(@types/node@24.19.2)(yaml@2.9.1)
+      mdast-util-mdx-jsx: 3.2.0
+      rehype-raw: 7.0.0
+      satteri: 0.10.5
+      unist-util-visit: 5.1.0
+      unist-util-visit-parents: 6.0.2
+    transitivePeerDependencies:
+      - supports-color
 
   std-env@4.3.0: {}
 

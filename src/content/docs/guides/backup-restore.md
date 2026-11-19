@@ -5,8 +5,8 @@ description: Anleitung wie man ein Backup und Restore zur Datensicherung oder Se
 
 Deine Daten, Deine Verantwortung zur Datensicherung
 
-Wie Migration
+1. stoppe radicale service
 
-stop service
-backup /var/lib/radicale/collections/
-start service
+2. sichere /var/lib/radicale/collections/
+
+3. starte radicale service

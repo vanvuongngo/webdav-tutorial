@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import { starlightBasePath } from "starlight-base-path";
+import starlightImageZoom from 'starlight-image-zoom';
 
 const base = '/webdav-tutorial';
 
@@ -24,7 +25,7 @@ export default defineConfig({
 					items: [
 						{ slug: 'guides/get-started' },
 						{ slug: 'guides/secure' },
-						{ slug: 'guides/backup-restore' },
+						{ slug: 'guides/backup-restore' }
 					],
 				},
 				{
@@ -64,7 +65,7 @@ export default defineConfig({
 					lang: 'de',
 				},
 			},
-			plugins: [starlightBasePath()],
+			plugins: [starlightBasePath(), starlightImageZoom()],
 			customCss: [
 				'./src/styles/custom.css',
 			],
